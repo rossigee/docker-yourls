@@ -25,6 +25,9 @@ RUN mkdir /var/www/public_html
 WORKDIR /var/www/public_html
 RUN curl -sL https://github.com/YOURLS/YOURLS/archive/1.7.2.tar.gz | tar xz --strip-components=1
 
+# Apply fix from https://github.com/YOURLS/YOURLS/pull/2376/commits/c8144d702a81995093704334d491677f1b1efdd3
+COPY functions-auth.php includes/functions-auth.php
+
 COPY config.php /var/www/public_html/user/config.php
 
 EXPOSE 80
