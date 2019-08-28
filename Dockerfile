@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk add --no-cache \
+RUN apk -U upgrade && apk add \
 	curl tar \
 	supervisor \
 	nginx \
@@ -8,10 +8,16 @@ RUN apk add --no-cache \
 	php7-fpm \
 	php7-json \
 	php7-mysqli \
+	php7-pdo_mysql \
 	php7-session
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 RUN mkdir /run/nginx
+
+# Show nginx logs in Docker console output
+RUN rm -f /var/log/nginx/* && \
+    ln -sf /dev/stdout /var/log/nginx/access.log && \
+    ln -sf /dev/stderr /var/log/nginx/error.log
 
 COPY www.conf /etc/php7/php-fpm.d/www.conf
 RUN addgroup nginx nobody
