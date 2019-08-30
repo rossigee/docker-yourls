@@ -6,6 +6,7 @@ RUN apk -U upgrade && apk add \
 	nginx \
 	php7-curl \
 	php7-fpm \
+	php7-iconv \
 	php7-json \
 	php7-mysqli \
 	php7-pdo_mysql \
