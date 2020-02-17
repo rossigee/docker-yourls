@@ -30,10 +30,7 @@ CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 # Set up YOURLS document root
 RUN mkdir /var/www/public_html
 WORKDIR /var/www/public_html
-RUN curl -sL https://github.com/YOURLS/YOURLS/archive/1.7.3.tar.gz | tar xz --strip-components=1
-
-# Apply fix from https://github.com/YOURLS/YOURLS/pull/2376/commits/c8144d702a81995093704334d491677f1b1efdd3
-COPY functions-auth.php includes/functions-auth.php
+RUN curl -sL https://github.com/YOURLS/YOURLS/archive/1.7.6.tar.gz | tar xz --strip-components=1
 
 COPY config.php /var/www/public_html/user/config.php
 
