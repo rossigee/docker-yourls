@@ -30,7 +30,7 @@ CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 # Set up YOURLS document root
 RUN mkdir /var/www/public_html
 WORKDIR /var/www/public_html
-RUN curl -sL https://github.com/YOURLS/YOURLS/archive/1.7.6.tar.gz | tar xz --strip-components=1
+RUN curl -sL https://github.com/YOURLS/YOURLS/archive/1.7.9.tar.gz | tar xz --strip-components=1
 
 COPY config.php /var/www/public_html/user/config.php
 
